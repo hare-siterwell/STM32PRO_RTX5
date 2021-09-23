@@ -1,5 +1,5 @@
 # STM32PRO_RTX5
-VSCode + clangd + CMake + pyOCD + armclang + RTX5 + STM32CubeMX
+VSCode + clangd + CMake + pyOCD + ARMClang + RTX5 + STM32CubeMX
 ## Features
 - Cool
 
@@ -18,9 +18,9 @@ VSCode + clangd + CMake + pyOCD + armclang + RTX5 + STM32CubeMX
       "servertype": "pyocd",
       "executable": "build/release.elf",
       "runToMain": true,
-      "svdFile": "STM32F103xx.svd", // Need to change
-      "targetId": "STM32F103ZE", // Need to change
-      "cmsisPack": "Keil.STM32F1xx_DFP.2.3.0.pack" // Need to change
+      "svdFile": "STM32F40x.svd",
+      "targetId": "STM32F407ZG",
+      "cmsisPack": "Keil.STM32F4xx_DFP.2.15.0.pack"
     }
   ]
 }
@@ -40,9 +40,9 @@ VSCode + clangd + CMake + pyOCD + armclang + RTX5 + STM32CubeMX
         "--erase",
         "sector",
         "--target",
-        "STM32F103ZE", // Need to change
+        "STM32F407ZG",
         "--pack",
-        "Keil.STM32F1xx_DFP.2.3.0.pack", // Need to change
+        "Keil.STM32F4xx_DFP.2.15.0.pack",
         "build/release.hex"
       ],
       "group": {

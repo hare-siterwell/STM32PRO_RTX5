@@ -23,10 +23,8 @@ set(CMAKE_ASM_FLAGS " ${COMMON_FLAGS} -masm=auto -c -gdwarf-3")
 set(SECTIONS_SCRIPT_PATH ${CMAKE_SOURCE_DIR}/SYSTEM/Sections.sct)
 set(CMAKE_EXE_LINKER_FLAGS "
     --cpu Cortex-M4.fp.sp \
-    --strict \
-    --scatter ${SECTIONS_SCRIPT_PATH} \
-    --summary_stderr \
-    --info summarysizes \
+    --strict --scatter ${SECTIONS_SCRIPT_PATH} \
+    --summary_stderr --info summarysizes \
     --map --load_addr_map_info --xref --callgraph --symbols \
     --info sizes --info totals --info unused --info veneers \
     "
