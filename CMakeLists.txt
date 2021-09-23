@@ -4,15 +4,15 @@ cmake_minimum_required(VERSION 3.21)
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR cortex-m4)
 
-set(TOOLCHAIN_PATH C:/keil_v5/ARM/ARMCLANG/bin/)
-set(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}armclang.exe)
-set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}armclang.exe)
+set(TOOLCHAIN_PATH C:/keil_v5/ARM/ARMCLANG/)
+set(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}bin/armclang.exe)
+set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}bin/armclang.exe)
 set(CMAKE_C_COMPILER_WORKS TRUE)
 set(CMAKE_CXX_COMPILER_WORKS TRUE)
 
-set(CMAKE_C_LINK_EXECUTABLE ${TOOLCHAIN_PATH}armlink.exe)
-set(CMAKE_CXX_LINK_EXECUTABLE ${TOOLCHAIN_PATH}armlink.exe)
-set(CMAKE_ASM_LINK_EXECUTABLE ${TOOLCHAIN_PATH}armlink.exe)
+set(CMAKE_C_LINK_EXECUTABLE ${TOOLCHAIN_PATH}bin/armlink.exe)
+set(CMAKE_CXX_LINK_EXECUTABLE ${TOOLCHAIN_PATH}bin/armlink.exe)
+set(CMAKE_ASM_LINK_EXECUTABLE ${TOOLCHAIN_PATH}bin/armlink.exe)
 
 set(FPU_FLAG "-mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 set(COMMON_FLAGS "--target=arm-arm-none-eabi -mcpu=${CMAKE_SYSTEM_PROCESSOR} ${FPU_FLAG}")
@@ -39,10 +39,10 @@ include_directories(Core/Inc
     Drivers/STM32F4xx_HAL_Driver/Inc
     Drivers/CMSIS/Device/ST/STM32F4xx/Include
     Drivers/CMSIS/Include
-    C:/Keil_v5/ARM/ARMCLANG/include
-    C:/Keil_v5/ARM/ARMCLANG/include/arm_linux
-    C:/Keil_v5/ARM/ARMCLANG/include/arm_linux_compat
-    C:/Keil_v5/ARM/ARMCLANG/include/libcxx
+    ${TOOLCHAIN_PATH}include
+    ${TOOLCHAIN_PATH}include/arm_linux
+    ${TOOLCHAIN_PATH}include/arm_linux_compat
+    ${TOOLCHAIN_PATH}include/libcxx
     SYSTEM/Inc
     RTOS2/RTX/Include
     RTOS2/Include
@@ -61,5 +61,5 @@ file(GLOB_RECURSE SOURCES
 add_executable(release ${SOURCES})
 
 add_custom_command(TARGET release POST_BUILD
-    COMMAND ${TOOLCHAIN_PATH}fromelf.exe --i32 -o release.hex release.elf
+    COMMAND ${TOOLCHAIN_PATH}bin/fromelf.exe --i32 -o release.hex release.elf
 )
