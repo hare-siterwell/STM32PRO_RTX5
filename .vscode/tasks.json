@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Load",
+      "type": "shell",
+      "command": "pyocd",
+      "args": [
+        "flash",
+        "--erase",
+        "sector",
+        "--target",
+        "STM32F407ZG",
+        "--pack",
+        "C:/Users/renil/AppData/Local/Arm/Packs/.Download/Keil.STM32F4xx_DFP.2.15.0.pack",
+        "build/release.hex"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

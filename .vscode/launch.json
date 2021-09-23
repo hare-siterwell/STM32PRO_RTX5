@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pyOCD",
+      "type": "cortex-debug",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "servertype": "pyocd",
+      "executable": "build/release.elf",
+      "runToMain": true,
+      "svdFile": "C:/Users/renil/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/CMSIS/SVD/STM32F40x.svd",
+      "targetId": "STM32F407ZG",
+      "cmsisPack": "C:/Users/renil/AppData/Local/Arm/Packs/.Download/Keil.STM32F4xx_DFP.2.15.0.pack"
+    }
+  ]
+}
