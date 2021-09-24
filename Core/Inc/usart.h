@@ -47,8 +47,8 @@ extern struct UartRx usart1;
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-void UART_IDLECallback(UART_HandleTypeDef *uartHandle);
-void UART_ReEnable(UART_HandleTypeDef *uartHandle);
+void UART_IDLECallback(UART_HandleTypeDef *huart);
+void UART_ReEnable(UART_HandleTypeDef *huart);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

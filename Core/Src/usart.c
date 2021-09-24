@@ -177,13 +177,13 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 /* USER CODE BEGIN 1 */
 /**
  * @brief 串口空闲中断回调函数
- * @param uartHandle 串口句柄
+ * @param huart 串口句柄
  */
-void UART_IDLECallback(UART_HandleTypeDef *uartHandle) {
-  if (__HAL_UART_GET_FLAG(uartHandle, UART_FLAG_IDLE)) { // IDLE标志被置位
-    __HAL_UART_CLEAR_IDLEFLAG(uartHandle);               // 清除标志位
-    HAL_UART_AbortReceive(uartHandle);                   // 停止DMA接收
-    if (uartHandle->Instance == USART1) {
+void UART_IDLECallback(UART_HandleTypeDef *huart) {
+  if (__HAL_UART_GET_FLAG(huart, UART_FLAG_IDLE)) { // IDLE标志被置位
+    __HAL_UART_CLEAR_IDLEFLAG(huart);               // 清除标志位
+    HAL_UART_AbortReceive(huart);                   // 停止DMA接收
+    if (huart->Instance == USART1) {
       usart1.len = UART_REC_LEN - __HAL_DMA_GET_COUNTER(&hdma_usart1_rx);
       osSemaphoreRelease(usart1.sta); // 数据处理
     }
@@ -192,13 +192,13 @@ void UART_IDLECallback(UART_HandleTypeDef *uartHandle) {
 
 /**
  * @brief 串口再使能
- * @param uartHandle 串口句柄
+ * @param huart 串口句柄
  */
-void UART_ReEnable(UART_HandleTypeDef *uartHandle) {
-  if (uartHandle->Instance == USART1) {
+void UART_ReEnable(UART_HandleTypeDef *huart) {
+  if (huart->Instance == USART1) {
     memset(usart1.buf, 0, usart1.len);
     usart1.len = 0;
-    HAL_UART_Receive_DMA(uartHandle, usart1.buf, UART_REC_LEN);
+    HAL_UART_Receive_DMA(huart, usart1.buf, UART_REC_LEN);
   }
 }
 /* USER CODE END 1 */
