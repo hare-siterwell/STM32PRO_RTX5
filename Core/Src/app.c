@@ -7,8 +7,9 @@ void app_main(void *argument) { osThreadNew(Task_Usart1, NULL, NULL); }
 
 /* 串口1通信 */
 __NO_RETURN static void Task_Usart1(void *argument) {
-  usart1.sta = osSemaphoreNew(1U, 0U, NULL);
   printf("Task_Usart1 running!\r\n");
+  usart1.sta = osSemaphoreNew(1U, 0U, NULL);
+
   while (1) {
     osSemaphoreAcquire(usart1.sta, osWaitForever);
 

@@ -44,19 +44,14 @@ include_directories(Core/Inc
     ${TOOLCHAIN_PATH}include/arm_linux_compat
     ${TOOLCHAIN_PATH}include/libcxx
     SYSTEM/Inc
-    RTOS2/RTX/Include
-    RTOS2/Include
-    RTOS2/RTX/Config
+    RTOS2/Inc
 )
 
 file(GLOB_RECURSE SOURCES
     Core/Src/*.c
     Drivers/STM32*_Driver/Src/*.c
-    SYSTEM/Src/*.*
-    RTOS2/RTX/Source/GCC/irq_armv7m.S
-    RTOS2/RTX/Source/*.c
-    RTOS2/Source/*.c
-    RTOS2/RTX/Config/*.c
+    SYSTEM/Src/*.[sc]
+    RTOS2/Src/*.[sc]
 )
 add_executable(release ${SOURCES})
 

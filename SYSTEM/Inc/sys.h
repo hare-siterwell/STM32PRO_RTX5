@@ -41,6 +41,8 @@ typedef __I uint32_t vuc32;
 typedef __I uint16_t vuc16;
 typedef __I uint8_t vuc8;
 
+typedef enum { false, true } bool;
+
 /* 以下为汇编函数 */
 void WFI_SET(void);      // 执行WFI指令
 void INTX_DISABLE(void); // 关闭所有中断
