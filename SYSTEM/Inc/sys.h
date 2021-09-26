@@ -4,10 +4,6 @@
 #include "stm32f4xx_hal.h"  // SYSTEM适配
 #define SYSTEM_SUPPORT_OS 1 // 是否支持OS
 
-#if SYSTEM_SUPPORT_OS
-#include "cmsis_os2.h" // 支持RTX5
-#endif
-
 /* 定义一些常用的数据类型短关键字 */
 typedef int32_t s32;
 typedef int16_t s16;
