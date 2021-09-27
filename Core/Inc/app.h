@@ -1,3 +1,8 @@
+/**
+ * @file app.h
+ * @brief This file contains all the function prototypes for
+ *        the app.c file
+ */
 #ifndef __APP_H
 #define __APP_H
 

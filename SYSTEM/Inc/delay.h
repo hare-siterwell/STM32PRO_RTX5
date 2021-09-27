@@ -1,3 +1,8 @@
+/**
+ * @file delay.h
+ * @brief This file contains all the function prototypes for
+ *        the delay.c file
+ */
 #ifndef __DELAY_H
 #define __DELAY_H
 

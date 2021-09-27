@@ -1,3 +1,7 @@
+/**
+ * @file sys.h
+ * @brief Contains the common defines of the SYSTEM
+ */
 #ifndef __SYS_H
 #define __SYS_H
 

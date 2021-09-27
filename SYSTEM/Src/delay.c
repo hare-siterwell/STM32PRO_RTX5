@@ -1,3 +1,7 @@
+/**
+ * @file delay.c
+ * @brief Manage delays
+ */
 #include "delay.h"
 
 #if SYSTEM_SUPPORT_OS // 如果支持OS
