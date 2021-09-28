@@ -21,18 +21,15 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-/* 支持printf函数,而不需要use MicroLIB */
-#if 1
+#if 1 // 支持printf，而不需要use MicroLIB
 __asm(".global __use_no_semihosting");
-/* 标准库需要 */
 FILE __stdout;
-/* 避免使用半主机模式 */
-void _sys_exit(int x) {}
+void _sys_exit(int x) {} // 避免使用半主机模式
 /* 重定义fputc函数 */
 int fputc(int ch, FILE *f) {
-  while (!(USART1->SR & 0X40))
+  while (!__HAL_UART_GET_FLAG(&huart1, UART_FLAG_TC))
     ;
-  USART1->DR = (u8)ch;
+  HAL_UART_Transmit_DMA(&huart1, (u8 *)&ch, 1);
   return ch;
 }
 #endif
