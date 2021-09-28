@@ -27,9 +27,7 @@ FILE __stdout;
 void _sys_exit(int x) {} // 避免使用半主机模式
 /* 重定义fputc函数 */
 int fputc(int ch, FILE *f) {
-  while (!__HAL_UART_GET_FLAG(&huart1, UART_FLAG_TC))
-    ;
-  HAL_UART_Transmit_DMA(&huart1, (u8 *)&ch, 1);
+  HAL_UART_Transmit(&huart1, (u8 *)&ch, 1, 1000);
   return ch;
 }
 #endif
