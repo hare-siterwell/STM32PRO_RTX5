@@ -21,12 +21,11 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-#if 1 // 支持printf，而不需要use MicroLIB
+#if 1 // 支持printf
 __asm(".global __use_no_semihosting");
 FILE __stdout;
-void _sys_exit(int x) {} // 避免使用半主机模式
-/* 重定义fputc函数 */
-int fputc(int ch, FILE *f) {
+void _sys_exit(int x) {}     // 避免使用半主机模式
+int fputc(int ch, FILE *f) { // 重定义
   HAL_UART_Transmit(&huart1, (u8 *)&ch, 1, 1000);
   return ch;
 }
